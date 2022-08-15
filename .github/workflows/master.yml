@@ -1,0 +1,23 @@
+name: master
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    # Prevent running this on forks
+    if: github.repository_owner == 'flybywiresim'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Build config
+        run: |
+          npm run build -- production
+      - name: Upload to Bunny CDN
+        env:
+          BUNNY_BUCKET_PASSWORD: ${{ secrets.BUNNY_BUCKET_PASSWORD }}
+          BUNNY_SECRET_TOKEN: ${{ secrets.BUNNY_SECRET_TOKEN }}
+        run: |
+          ./scripts/cdn.sh $BUNNY_BUCKET_DESTINATION ./dist
