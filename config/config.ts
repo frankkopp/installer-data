@@ -275,8 +275,8 @@ const config: Configuration = {
                             url: 'https://flybywirecdn.com/addons/a380x/stable-4k',
                             alternativeUrls: [],
                             description: 'Includes our 4K downscaled cabin, cockpit and exterior textures. Choose this option for reduced stutters, better performance, with HIGH or lower texture resolution. Additionally, if you intend to use the following:\n\n' +
-                            '* Use frame generation \n\n' + 
-                            '* Virtual Reality (VR) \n\n' + 
+                            '* Use frame generation \n\n' +
+                            '* Virtual Reality (VR) \n\n' +
                             '* DX12 beta \n\n' +
                             '* or are otherwise limited by your graphics card VRAM amount. [System Requirements](https://docs.flybywiresim.com/aircraft/install/installation/#estimated-system-requirements-for-a380x)',
                             isExperimental: false,
@@ -290,12 +290,22 @@ const config: Configuration = {
                             url: 'https://flybywirecdn.com/addons/a380x/stable-8k',
                             alternativeUrls: [],
                             description: 'Includes our 8K full resolution cabin, cockpit and exterior textures. This is the full fidelity experience and our recommendation if your system is powerful enough to support it. Realistic and in high detail.\n\n' +
-                            '* DX11 recommended \n\n' + 
+                            '* DX11 recommended \n\n' +
                             '* HIGH or lower texture resolution setting recommended \n\n',
                             isExperimental: false,
                             releaseModel: {
                                 type: 'fragmenter',
                             },
+                        },
+                    ],
+                    incompatibleAddons: [
+                        // title: the exact title as it appears in the manifest.json
+                        // creator: the exact creator as it appears in the manifest.json
+                        // packageVersion syntax follows: https://www.npmjs.com/package/semver
+                        // description: a short description of why the addon is incompatible
+                        {
+                            title: 'Mets747 FBW A380 Lights Mod',
+                            description: "It is required to remove this add-on before installing and using the A32NX. This add-on overrides A32NX components and may render the A32NX unusable."
                         },
                     ],
                     disallowedRunningExternalApps: ['@/msfs'],
